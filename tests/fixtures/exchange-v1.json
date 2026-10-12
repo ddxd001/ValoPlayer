@@ -1,0 +1,17 @@
+{
+  "schema": "wegame-moments",
+  "version": 1,
+  "timeUnit": "seconds",
+  "recordings": [
+    {
+      "file": "demo.mp4",
+      "title": "外部电脑导入示例",
+      "account": "演示账号",
+      "duration": 30,
+      "events": [
+        { "id": "kill-1", "kind": "kill", "time": 3.25, "label": "击杀 · 爆头" },
+        { "id": "kill-2", "kind": "kill", "time": 17, "label": "击杀" }
+      ]
+    }
+  ]
+}

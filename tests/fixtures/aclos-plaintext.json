@@ -1,0 +1,81 @@
+{
+  "key_wonderful_list_123": [
+    {
+      "matches_id": "synthetic-match",
+      "openID": "123",
+      "gameStartTime": "2026-10-13 21:00:00.000",
+      "gameEndTime": "2026-10-13 21:30:00.000",
+      "agent": { "agent_name": "Cypher" },
+      "videos": [
+        {
+          "video_id": "moment",
+          "video_src": "demo.mp4",
+          "video_name": "合成三杀示例",
+          "video_type": "三杀时刻",
+          "video_duration": "30000",
+          "rounds": [
+            {
+              "round_sTime": 0,
+              "round_clips": [
+                {
+                  "clip_sTime": "11000",
+                  "clip_events": [
+                    {
+                      "event_id": "valid",
+                      "event_type": "kill",
+                      "event_sTime": "6000",
+                      "event_ext": {
+                        "EventName": "Shot",
+                        "EventTime": "2026-10-13 21:02:03.456",
+                        "AgentName": "Cypher",
+                        "KillerPlayerName": "SyntheticLocal",
+                        "KilledPlayerName": "SyntheticEnemy",
+                        "KillerIsMe": "1",
+                        "KilledIsMe": "0",
+                        "GetShotRolePart": 1
+                      }
+                    },
+                    { "event_id": "missing-evidence", "event_type": "kill", "event_sTime": 7000, "event_ext": { "EventName": "Shot" } }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "video_id": "montage",
+          "video_src": "montage.mp4",
+          "video_type": "击杀集锦",
+          "video_duration": 140000,
+          "rounds": [
+            {
+              "round_sTime": 70000,
+              "round_clips": [
+                {
+                  "clip_sTime": 70000,
+                  "clip_events": [
+                    {
+                      "event_id": "montage-event",
+                      "event_type": "kill",
+                      "event_sTime": 13000,
+                      "event_ext": {
+                        "EventName": "Shot",
+                        "EventTime": "2026-10-13 21:02:03.456",
+                        "AgentName": "Cypher",
+                        "KillerPlayerName": "SyntheticLocal",
+                        "KilledPlayerName": "SyntheticEnemy",
+                        "KillerIsMe": 1,
+                        "KilledIsMe": 0,
+                        "GetShotRolePart": 2
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

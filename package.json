@@ -1,6 +1,6 @@
 {
-  "name": "wegame-moments",
-  "version": "0.1.0",
+  "name": "valoplayer",
+  "version": "0.2.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -13,7 +13,8 @@
     "desktop:build": "node scripts/desktop.mjs build --no-bundle",
     "setup:media": "node scripts/setup-media.mjs",
     "test:rust": "node scripts/desktop.mjs test",
-    "package:windows": "node scripts/package-windows.mjs"
+    "package:windows": "node scripts/package-windows.mjs",
+    "installer:build": "node scripts/desktop.mjs build --bundles nsis"
   },
   "dependencies": {
     "@tauri-apps/api": "^2.10.1",

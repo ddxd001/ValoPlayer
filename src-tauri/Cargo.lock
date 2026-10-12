@@ -3961,6 +3961,28 @@ dependencies = [
 ]
 
 [[package]]
+name = "valoplayer"
+version = "0.2.1"
+dependencies = [
+ "aes",
+ "cbc",
+ "chrono",
+ "hex",
+ "notify",
+ "rusqlite",
+ "serde",
+ "serde_json",
+ "sha2",
+ "tauri",
+ "tauri-build",
+ "tauri-plugin-dialog",
+ "tempfile",
+ "trash",
+ "uuid",
+ "walkdir",
+]
+
+[[package]]
 name = "vcpkg"
 version = "0.2.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4209,28 +4231,6 @@ dependencies = [
  "thiserror 2.0.21",
  "windows",
  "windows-core",
-]
-
-[[package]]
-name = "wegame-moments"
-version = "0.1.0"
-dependencies = [
- "aes",
- "cbc",
- "chrono",
- "hex",
- "notify",
- "rusqlite",
- "serde",
- "serde_json",
- "sha2",
- "tauri",
- "tauri-build",
- "tauri-plugin-dialog",
- "tempfile",
- "trash",
- "uuid",
- "walkdir",
 ]
 
 [[package]]

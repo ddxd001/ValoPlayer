@@ -1,16 +1,16 @@
 [package]
-name = "wegame-moments"
-version = "0.1.0"
+name = "valoplayer"
+version = "0.2.1"
 description = "Windows local VALORANT highlight library"
 edition = "2021"
 license = "GPL-3.0-or-later"
 
 [lib]
-name = "wegame_moments_lib"
+name = "valoplayer_lib"
 crate-type = ["rlib"]
 
 [[bin]]
-name = "wegame-moments"
+name = "ValoPlayer"
 path = "src/main.rs"
 required-features = ["desktop"]
 

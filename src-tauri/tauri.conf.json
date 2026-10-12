@@ -1,18 +1,93 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "Moments",
-  "version": "0.1.0",
+  "productName": "ValoPlayer",
+  "version": "0.2.1",
   "identifier": "com.local.wegame-moments",
   "build": {
-    "beforeDevCommand": "npm run dev", "devUrl": "http://127.0.0.1:1420",
-    "beforeBuildCommand": "npm run build", "frontendDist": "../dist"
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://127.0.0.1:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
   },
   "app": {
-    "windows": [{"label": "main", "title": "无畏时刻 · Moments", "width": 1440, "height": 920, "minWidth": 1000, "minHeight": 680, "backgroundColor": "#0c1017", "theme": "Dark"}],
+    "windows": [
+      {
+        "label": "main",
+        "title": "ValoPlayer · 无畏时刻",
+        "width": 1440,
+        "height": 920,
+        "minWidth": 1000,
+        "minHeight": 680,
+        "backgroundColor": "#0c1017",
+        "theme": "Dark"
+      }
+    ],
     "security": {
       "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' asset: http://asset.localhost https://asset.localhost data: blob:; media-src 'self' asset: http://asset.localhost https://asset.localhost blob:; connect-src ipc: http://ipc.localhost http://127.0.0.1:1420 ws://127.0.0.1:1420; object-src 'none'; frame-src 'none'",
-      "assetProtocol": {"enable": true, "scope": []}
+      "assetProtocol": {
+        "enable": true,
+        "scope": []
+      }
     }
   },
-  "bundle": {"active": true, "targets": ["nsis"], "icon": ["icons/icon.ico"]}
+  "bundle": {
+    "active": true,
+    "targets": [
+      "nsis"
+    ],
+    "icon": [
+      "icons/icon.ico"
+    ],
+    "publisher": "ddxd001",
+    "homepage": "https://github.com/ddxd001/ValoPlayer",
+    "shortDescription": "无畏契约无畏时刻增强播放器",
+    "category": "Video",
+    "license": "GPL-3.0-or-later",
+    "licenseFile": "../LICENSE",
+    "useLocalToolsDir": true,
+    "resources": {
+      "../tools/ffmpeg.exe": "tools/ffmpeg.exe",
+      "../tools/ffprobe.exe": "tools/ffprobe.exe",
+      "../tools/FFmpeg-LICENSE.txt": "tools/FFmpeg-LICENSE.txt",
+      "../tools/FFmpeg-BUILD.txt": "tools/FFmpeg-BUILD.txt",
+      "../tools/FFprobe-LICENSE-GPL-3.0.txt": "tools/FFprobe-LICENSE-GPL-3.0.txt",
+      "../tools/ffmpeg-static-LICENSE": "tools/ffmpeg-static-LICENSE",
+      "../tools/ffprobe-static-LICENSE": "tools/ffprobe-static-LICENSE",
+      "../tools/ffmpeg-static-README.md": "tools/ffmpeg-static-README.md",
+      "../tools/ffprobe-static-README.md": "tools/ffprobe-static-README.md",
+      "../LICENSE": "LICENSE",
+      "../README.md": "README.md",
+      "../docs/ACLOS.md": "docs/ACLOS.md",
+      "../docs/MEDIA.md": "docs/MEDIA.md",
+      "../docs/TEST_REPORT.md": "docs/TEST_REPORT.md",
+      "../docs/metadata-v1.example.json": "docs/metadata-v1.example.json",
+      "../docs/INSTALLER.md": "docs/INSTALLER.md",
+      "icons/icon.ico": "icons/ValoPlayer.ico",
+      "installer/LICENSE-MIT.txt": "licenses/tauri-installer-LICENSE-MIT.txt",
+      "installer/README.md": "docs/INSTALLER_TEMPLATE.md"
+    },
+    "windows": {
+      "allowDowngrades": false,
+      "webviewInstallMode": {
+        "type": "downloadBootstrapper",
+        "silent": true
+      },
+      "nsis": {
+        "installMode": "currentUser",
+        "languages": [
+          "SimpChinese",
+          "English"
+        ],
+        "displayLanguageSelector": true,
+        "installerIcon": "icons/icon.ico",
+        "uninstallerIcon": "icons/icon.ico",
+        "headerImage": "icons/installer-header.bmp",
+        "sidebarImage": "icons/installer-sidebar.bmp",
+        "startMenuFolder": "ValoPlayer",
+        "compression": "lzma",
+        "template": "installer/installer.nsi"
+      }
+    }
+  },
+  "mainBinaryName": "ValoPlayer"
 }

@@ -146,7 +146,7 @@ onBeforeUnmount(() => { stopListening(); window.removeEventListener('keydown', h
 <template>
   <div class="app-shell">
     <aside class="sidebar">
-      <div class="brand"><div class="brand-symbol"><Clapperboard :size="23" /></div><div><strong>MOMENTS<span>+</span></strong><small>无畏时刻增强播放器</small></div></div>
+      <div class="brand"><div class="brand-symbol"><Clapperboard :size="23" /></div><div><strong>Valo<span>Player</span></strong><small>无畏时刻增强播放器</small></div></div>
       <div class="workspace-label">个人录像库 <span>LOCAL</span></div>
       <nav class="main-nav" aria-label="录像库导航">
         <button :class="{ active: view === 'all' }" @click="changeView('all')"><LayoutGrid :size="19" /><span>全部录像</span><small>{{ library.recordings.length }}</small></button>
@@ -157,7 +157,7 @@ onBeforeUnmount(() => { stopListening(); window.removeEventListener('keydown', h
       <nav class="category-nav" aria-label="自定义分类"><button v-for="category in library.categories" :key="category.id" :class="{ active: view === `category:${category.id}` }" @click="changeView(`category:${category.id}`)"><FolderClosed :size="17" /><span>{{ category.name }}</span><small>{{ categoryCount(category.id) }}</small></button><p v-if="!library.categories.length" class="sidebar-empty">为你的精彩瞬间分个类</p></nav>
       <div class="nav-section-title source-title">录像来源<button class="icon-button" title="管理来源" aria-label="管理来源" @click="modal = 'sources'"><Plus :size="16" /></button></div>
       <nav class="source-nav" aria-label="录像来源"><button v-for="source in library.sources" :key="source.id" :class="{ active: view === `source:${source.id}` }" @click="changeView(`source:${source.id}`)"><span class="source-dot" :class="{ imported: source.kind === 'import' }" /><div><span>{{ source.name }}</span><small>{{ source.account || (source.kind === 'import' ? '外部电脑录像' : '自动识别账号') }}</small></div><ChevronRight :size="13" /></button><button v-if="!library.sources.length" class="add-source-link" @click="modal = 'sources'"><Plus :size="16" /> 连接录像目录</button></nav>
-      <div class="sidebar-bottom"><div class="local-storage"><HardDrive :size="16" /><span>本地录像</span><strong>{{ storage }}</strong></div><button class="settings-nav" @click="openSettings"><Settings2 :size="18" /><span>设置与工具</span><span class="version">v0.1.0</span></button><div class="privacy-footnote"><ShieldCheck :size="13" /> 本地管理 · 官方数据只读</div></div>
+      <div class="sidebar-bottom"><div class="local-storage"><HardDrive :size="16" /><span>本地录像</span><strong>{{ storage }}</strong></div><button class="settings-nav" @click="openSettings"><Settings2 :size="18" /><span>设置与工具</span><span class="version">v0.2.1</span></button><div class="privacy-footnote"><ShieldCheck :size="13" /> 本地管理 · 官方数据只读</div></div>
     </aside>
     <main class="main-content">
       <header class="topbar"><div class="breadcrumb"><span>我的空间</span><ChevronRight :size="13" /><strong>{{ currentRecording ? '播放器' : title }}</strong></div><div class="topbar-status"><span class="status-dot" :class="{ inactive: !isDesktop }" /><span>{{ demoMode ? '浏览器演示' : !isDesktop ? '浏览器预览' : library.settings.autoScan ? '自动监测已开启' : '手动更新' }}</span><span class="topbar-divider" /><button class="icon-button" aria-label="设置" @click="openSettings"><Settings2 :size="17" /></button></div></header>

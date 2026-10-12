@@ -1,8 +1,14 @@
-# Moments · 无畏时刻增强播放器
+# ValoPlayer · 无畏时刻增强播放器
 
-实际可运行的 Windows 本地 MVP，Tauri 2 + Rust + Vue 3 + TypeScript + 应用自有 SQLite。界面及实现独立开发，参考 WonderfulUI 的 ACLOS 格式与事件语义。
+ValoPlayer 是实际可运行的 Windows 本地 MVP，使用 Tauri 2 + Rust + Vue 3 + TypeScript + 应用自有 SQLite。界面及实现独立开发，参考 WonderfulUI 的 ACLOS 格式与事件语义。
 
-## 启动
+## Windows 安装
+
+运行 `ValoPlayer_0.2.1_x64-setup.exe`，按安装引导选择安装位置和快捷方式，然后启动 `ValoPlayer.exe`。安装引导支持简体中文和英文，默认仅为当前 Windows 用户安装，并包含 FFmpeg / ffprobe 媒体工具。
+
+安装后保留个人录像、收藏副本和索引在应用数据目录。卸载不会清空应用数据。0.2.1 修复桌面图标，并在升级时更新已有快捷方式。详见 [安装引导说明](docs/INSTALLER.md)。ValoPlayer 沿用 `com.local.wegame-moments` 数据目录标识，以兼容早期版本的数据；这个内部标识不影响正式产品名称。
+
+## 从源码启动
 
 在项目目录打开 PowerShell：
 
@@ -22,7 +28,10 @@ npm run test:rust -- media::tests::ffmpeg_smoke -- --ignored
 npm run test:rust -- library::tests::recycle_bin_smoke -- --ignored
 npm run desktop:build      # 构建 Windows 可执行文件，不制作安装包
 npm run package:windows    # 将程序、WebView2 Loader 和媒体工具整理到 dist-windows
+npm run installer:build    # 构建 ValoPlayer 0.2.1 Windows NSIS 安装引导程序
 ```
+
+桌面构建的程序名为 `ValoPlayer.exe`；安装包名为 `ValoPlayer_0.2.1_x64-setup.exe`，实际生成位置以构建输出为准。源码发布包使用 `ValoPlayer/` 作为项目目录前缀。
 
 仅查看界面：`npm run dev`，打开 `http://127.0.0.1:1420/`。浏览器默认显示空状态；“体验界面演示”使用明确标记的公共花卉视频和样例事件。本机读取、回收站及导出操作在桌面端执行。
 
@@ -40,7 +49,7 @@ npm run package:windows    # 将程序、WebView2 Loader 和媒体工具整理�
 
 ## 第一次使用
 
-启动桌面应用后自动扫描本机 ACLOS；初次索引可能需要十几秒。来源不存在时，通过左侧“录像来源”连接目录，或“导入录像”选择外部视频。数值命名的 ACLOS 账号缓存没有扩展名，导入时使用“所有文件”即可选择，务必保持其原文件名。
+启动 ValoPlayer 后自动扫描本机 ACLOS；初次索引可能需要十几秒。来源不存在时，通过左侧“录像来源”连接目录，或“导入录像”选择外部视频。数值命名的 ACLOS 账号缓存没有扩展名，导入时使用“所有文件”即可选择，务必保持其原文件名。
 
 录像库工具栏的“全部击杀数”可选择 1、2、3、4、5 杀、6 杀及以上或“无击杀事件”，能与账号、搜索、分类及排序共同使用。1–5 杀按该录像中已验证的击杀事件数精确匹配，不从标题猜测，也不是整局 KDA。“重置筛选”会同时清除击杀数、账号和搜索条件。观看录像后，点击“返回录像库”、关闭按钮或 Esc 会回到进入时的位置；切换侧栏来源或修改筛选条件则从新结果顶部开始。
 
@@ -58,7 +67,7 @@ npm run package:windows    # 将程序、WebView2 Loader 和媒体工具整理�
 
 永久副本仍保存在同一电脑，不能替代异地备份。个人视频与 SQLite 数据不随源码或便携程序分发。单文件导入保留原路径和一次性元数据快照；自动增量发现针对已经连接的来源目录。暂未提供分类重命名、视频流转码播放、字幕、安装器签名或自动更新。
 
-应用数据位置：`%LOCALAPPDATA%\com.local.wegame-moments\`（以设置里的实际路径为准），包含 `library.sqlite3`、`favorites/` 和 `thumbnails/`。媒体工具自动查找项目或程序旁的 `tools/`，也可以在设置指定 `ffmpeg.exe`（建议与 `ffprobe.exe` 同目录）。详见 [媒体工具说明](docs/MEDIA.md)。
+应用数据位置：`%LOCALAPPDATA%\com.local.wegame-moments\`（兼容早期版本的数据目录标识，以设置里的实际路径为准），包含 `library.sqlite3`、`favorites/` 和 `thumbnails/`。媒体工具自动查找项目或程序旁的 `tools/`，也可以在设置指定 `ffmpeg.exe`（建议与 `ffprobe.exe` 同目录）。详见 [媒体工具说明](docs/MEDIA.md)。
 
 Rust 核心测试以 `--no-default-features` 运行，与桌面窗口及文件选择器隔离；桌面构建默认启用 `desktop`。两个需要本机媒体工具/回收站的测试默认跳过，以上命令已分别显式运行并通过。回收站测试只使用自动生成的临时文件。
 

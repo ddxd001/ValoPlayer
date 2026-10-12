@@ -121,7 +121,7 @@ pub fn run() {
         if lib.db.sources().map_err(std::io::Error::other)?.is_empty(){for path in library::discover_sources(){let _=lib.add_source(&path,"","wegame");}}
         app.manage(AppState{library:Arc::new(Mutex::new(lib))});start_monitor(app.handle().clone());Ok(())
     }).invoke_handler(tauri::generate_handler![get_library,add_source,remove_source,scan_sources,discover_sources,import_files,set_favorites,create_category,delete_category,set_categories,delete_recordings,update_settings,get_environment,get_thumbnail,get_recording_media,export_clip,export_events])
-        .run(tauri::generate_context!()).expect("无法启动 Moments");
+        .run(tauri::generate_context!()).expect("无法启动 ValoPlayer");
 }
 }
 #[cfg(feature="desktop")]

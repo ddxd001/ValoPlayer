@@ -13,3 +13,4 @@ export interface Snapshot { recordings: Recording[]; sources: Source[]; categori
 export interface Environment { ffmpegAvailable: boolean; ffmpegPath: string; dataDir: string }
 export type LibraryView = 'all' | 'favorites' | 'imports' | `category:${string}` | `source:${string}`
 export type SortOrder = 'newest' | 'oldest' | 'duration' | 'title'
+export type KillCountFilter = 'all' | '0' | '1' | '2' | '3' | '4' | '5' | '6+'

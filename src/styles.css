@@ -83,7 +83,7 @@ input[type="range"] { accent-color: var(--accent); }
 .text-button:hover { color: #e2e5ed; }
 .accent-text, .danger-text { color: #fa8090 !important; }
 .muted { color: #727988; }
-.library-page { overflow-y: auto; flex: 1; padding: 33px 34px 0; }
+.library-page { position: relative; overflow-y: auto; flex: 1; padding: 33px 34px 0; }
 .page-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 27px; }
 .eyebrow { color: #818794; font-size: 9px; font-weight: 600; letter-spacing: 2px; }
 .page-heading h1 { display: flex; align-items: center; gap: 11px; margin: 11px 0 11px; color: #eceef3; font-size: 27px; font-weight: 650; letter-spacing: -1px; }
@@ -91,7 +91,7 @@ input[type="range"] { accent-color: var(--accent); }
 .page-heading p { color: #797f8d; font-size: 11px; margin: 0; line-height: 1.8; }
 .page-heading p > span { color: #606775; }
 .heading-actions { display: flex; gap: 10px; align-self: center; margin-top: 9px; }
-.library-toolbar { display: flex; align-items: center; gap: 10px; padding-bottom: 22px; border-bottom: 1px solid #282b34; }
+.library-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding-bottom: 22px; border-bottom: 1px solid #282b34; }
 .search-field { flex: 1; max-width: 530px; min-width: 180px; display: flex; align-items: center; gap: 10px; height: 37px; padding: 0 12px; background: #191c23; border: 1px solid #2c303a; border-radius: 7px; color: #707889; }
 .search-field:focus-within { border-color: #6b4b57; }
 .search-field input { border: 0; outline: 0; background: transparent; font-size: 11px; flex: 1; width: 100%; }
@@ -100,6 +100,11 @@ input[type="range"] { accent-color: var(--accent); }
 .account-select { position: relative; display: flex; align-items: center; gap: 8px; height: 37px; padding: 0 10px; border: 1px solid #30343f; border-radius: 7px; color: #848b9b; }
 .account-select select { border: 0; background: transparent; padding: 0 18px 0 0; font-size: 11px; min-width: 83px; max-width: 145px; appearance: none; outline: 0; color: #b1b7c6; }
 .account-select > svg:last-child { position: absolute; right: 10px; pointer-events: none; }
+.kill-select { position: relative; display: flex; flex-shrink: 0; align-items: center; gap: 8px; height: 37px; padding: 0 10px; border: 1px solid #30343f; border-radius: 7px; color: #848b9b; }
+.kill-select select { border: 0; background: transparent; padding: 0 18px 0 0; font-size: 11px; min-width: 81px; appearance: none; color: #b1b7c6; }
+.kill-select > svg:last-child { position: absolute; right: 10px; pointer-events: none; }
+.kill-select.active { border-color: #73515e; color: #ff7e8b; background: #ff657509; }
+.kill-select.active select { color: #ff8b96; }
 .sort-select { height: 37px; border-color: #30343f; background: transparent; padding: 0 8px; font-size: 11px; color: #b0b7c7; }
 .view-switch { display: flex; border: 1px solid #303540; border-radius: 7px; padding: 3px; gap: 2px; margin-left: auto; }
 .view-switch button { display: grid; place-items: center; width: 30px; height: 29px; background: transparent; color: #697383; border-radius: 4px; }

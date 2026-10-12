@@ -1,4 +1,4 @@
-import type { LibraryView, Recording, SortOrder } from '../types'
+import type { KillCountFilter, LibraryView, Recording, SortOrder } from '../types'
 
 export function formatTime(seconds: number): string {
   const total = Math.max(0, Math.floor(Number.isFinite(seconds) ? seconds : 0))
@@ -10,7 +10,10 @@ export function formatSize(bytes: number): string {
   if (bytes < 1024 ** 3) return `${(bytes / 1024 ** 2).toFixed(1)} MB`
   return `${(bytes / 1024 ** 3).toFixed(2)} GB`
 }
-export function filterRecordings(recordings: Recording[], view: LibraryView, account: string, query: string, sort: SortOrder, importSourceIds: string[] = []): Recording[] {
+export function countKills(recording: Pick<Recording, 'events'>): number {
+  return recording.events.reduce((count, event) => count + (event.kind === 'kill' ? 1 : 0), 0)
+}
+export function filterRecordings(recordings: Recording[], view: LibraryView, account: string, query: string, sort: SortOrder, importSourceIds: string[] = [], killFilter: KillCountFilter = 'all'): Recording[] {
   const search = query.trim().toLocaleLowerCase()
   return recordings.filter(r => {
     if (view === 'favorites' && r.favoriteMode === 'none') return false
@@ -18,6 +21,10 @@ export function filterRecordings(recordings: Recording[], view: LibraryView, acc
     if (view.startsWith('category:') && !r.categoryIds.includes(view.slice(9))) return false
     if (view.startsWith('source:') && r.sourceId !== view.slice(7)) return false
     if (account && r.account !== account) return false
+    if (killFilter !== 'all') {
+      const kills = countKills(r)
+      if (killFilter === '6+' ? kills < 6 : kills !== Number(killFilter)) return false
+    }
     return !search || `${r.title} ${r.account} ${r.events.map(e => e.label).join(' ')}`.toLocaleLowerCase().includes(search)
   }).sort((a, b) => sort === 'title' ? a.title.localeCompare(b.title, 'zh-CN') : sort === 'duration' ? b.duration - a.duration : sort === 'oldest' ? a.createdAt - b.createdAt : b.createdAt - a.createdAt)
 }
